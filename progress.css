@@ -1,0 +1,19 @@
+#progressBar {
+  width: 90%;
+  margin: 10px auto;
+  height: 22px;
+  background-color: #fffff;
+  font-family: 'proxima-nova', sans-serif;
+}
+#progressBar h2 {
+  font-weight: bold;
+}
+#progressBar div {
+  height: 100%;
+  text-align: right;
+  padding: 0 10px;
+  line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+  width: 0;
+  background-color: #7F7FD5;
+  box-sizing: border-box;
+}
