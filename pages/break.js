@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TwitchProgressBar duration={7} max={10} color="#D2D3E8"/>
+      <TwitchProgressBar duration={7} max={10} color="#D2D3E8" scene="break" />
     </div>
   )
 }

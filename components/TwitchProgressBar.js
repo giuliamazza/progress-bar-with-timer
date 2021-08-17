@@ -1,12 +1,13 @@
-import { useState, useCallback } from 'react';
-import ProgressBar from './ProgressBar'
-import useTwitch from '../lib/useTwitch'
+import { useState,  useCallback } from 'react';
+import ProgressBar from './ProgressBar';
+import useTwitch from '../lib/useTwitch';
+import {useSessionStorage} from "../hooks/useSessionStorage";
 
-export default function TwitchProgressBar({duration: defaultDuration, max: defaultMax, color}) {
+export default function TwitchProgressBar({duration: defaultDuration, max: defaultMax, color, scene}) {
   const [duration, setDuration] = useState(defaultDuration);
   const [add, setAdd] = useState(0);
-  const [max, setMax] = useState(defaultMax);
-  const [current, setCurrent] = useState(1);
+  const [max, setMax] = useSessionStorage('max', defaultMax);
+  const [current, setCurrent] = useSessionStorage('current', 1);
 
   const onCommand = useCallback(
     (channel, command, args, message, superuser) => {

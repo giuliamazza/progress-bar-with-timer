@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-import styles from './ProgressBar.module.css'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import {useCallback, useEffect, useRef, useState} from 'react';
+import styles from './ProgressBar.module.css';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 const formatTime = (time) => {
   return new Date(time).toISOString().substr(11, 8).replace(/^00\:/, '')
@@ -29,9 +29,10 @@ export default function ProgressBar({
   });
   
   useEffect(
-    () => secondsLeft.onChange((value) => {
-      setCountdown(formatTime(value * 1000));
-    }),
+    () =>
+      secondsLeft.onChange((value) => {
+        setCountdown(formatTime(value * 1000));
+      }),
     []
   );
 
