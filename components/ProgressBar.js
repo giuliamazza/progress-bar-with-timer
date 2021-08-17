@@ -9,6 +9,8 @@ const formatTime = (time) => {
 export default function ProgressBar({
   duration,
   add,
+  max,
+  current,
   color
 }) {
   const intervalRef = useRef();
@@ -25,6 +27,7 @@ export default function ProgressBar({
   const [countdown, setCountdown] = useState(() => {
     return formatTime((duration + add) * 60 * 1000)
   });
+  
   useEffect(
     () => secondsLeft.onChange((value) => {
       setCountdown(formatTime(value * 1000));
@@ -57,6 +60,9 @@ export default function ProgressBar({
 
   return (
     <div className={styles.container}>
+      <div className={styles.currentText}>
+        <span>{current + " / " + max + (max === 1 ? " pomodoro" : " pomodori")}</span>
+      </div>
       <div className={styles.barcontainer}>
         <motion.div className={styles.bar} style={{
           backgroundColor: color, 
@@ -64,7 +70,7 @@ export default function ProgressBar({
         }}>
         </motion.div>
       </div>
-      <div className={styles.text}>
+      <div className={styles.countdownText}>
         <span>{countdown}</span>
       </div>
     </div>
